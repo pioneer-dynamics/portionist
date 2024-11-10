@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -10,6 +11,10 @@ use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
 
+/**
+ * @property Illuminate\Database\Eloquent\Relations\HasMany<App\Models\Recipie> $recipies
+ * @property bool $is_super_admin Is this user a super admin
+ */
 class User extends Authenticatable implements MustVerifyEmail
 {
     use HasApiTokens;
@@ -50,6 +55,7 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     protected $appends = [
         'profile_photo_url',
+        'is_super_admin',
     ];
 
     /**
@@ -63,5 +69,22 @@ class User extends Authenticatable implements MustVerifyEmail
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    /**
+     * Get all of the recipies for the User
+     * 
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function recipies()
+    {
+        return $this->hasMany(Recipie::class);
+    }
+
+    public function isSuperAdmin(): Attribute
+    {
+        return Attribute::make(
+            get: fn () => $this->id === 1,
+        );  
     }
 }

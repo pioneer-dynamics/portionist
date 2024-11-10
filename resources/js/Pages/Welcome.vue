@@ -10,21 +10,18 @@ defineProps({
     canRegister: {
         type: Boolean,
     },
-    laravelVersion: {
-        type: String,
-        required: true,
-    },
-    phpVersion: {
-        type: String,
-        required: true,
-    },
+    totalRecipes: {
+        type: Number,
+        default: 0,
+    }
 });
+
 </script>
 
 <template>
     <Head title="Welcome" />
     <div class="bg-gray-100 h-screen">
-        <header class="bg-branding-blue-600 dark:bg-branding-blue-600 py-4">
+        <header class="bg-white dark:bg-branding-blue-600 py-4">
         <nav class="container mx-auto flex justify-between items-center">
             <Link href="/" class="text-color text-lg font-bold">
                 <img :src="Logo" alt="Portion.ist logo" width="100" height="100" class="mr-2">
@@ -61,7 +58,7 @@ defineProps({
     <main class="container mx-auto p-4 pt-6">
         <section class="bg-branding-blue-100 dark:bg-branding-blue-800 rounded shadow-md p-4 text-black dark:text-white">
             <h1 class="text-3xl font-bold mb-4 text-color">Discover new flavors with <span class="text-branding-green-500 bg-branding-blue-500 px-1 rounded">portion.ist</span></h1>
-            <p class="text-lg text-gray-600 dark:text-gray-400 mb-6">Generate interesting mixes of cocktails, mocktails, and food based on ingredients you have. You can save your recipes and share them with others.</p>
+            <p class="text-lg text-gray-600 dark:text-gray-400 mb-6">Generate interesting mixes of cocktails, mocktails, and food based on ingredients you have. We already have <span class="font-bold text-branding-green-500 bg-branding-blue-500 px-1 rounded">{{ totalRecipes }}</span> recipes in our database and you can generate more!!!.</p>
             <PrimaryLink :href="route('dashboard')">Get started</PrimaryLink>
         </section>
         <section class="mt-6">
