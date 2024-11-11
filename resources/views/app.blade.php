@@ -4,6 +4,12 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
+        <meta property="og:title" content="{{ config('app.name') }}" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="{{ config('app.url') }}" />
+        <meta property="og:image" content="{{ Vite::asset('resources/static/logo.png') }}" />
+        <meta property="og:description" content="Generate interesting mixes of cocktails, mocktails, and food based on ingredients you have" />
+
         <title inertia>{{ config('app.name', 'Laravel') }}</title>
 
         <!-- Fonts -->
