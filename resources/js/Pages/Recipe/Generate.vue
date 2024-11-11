@@ -20,7 +20,7 @@
         form.post(route('generate.action'), {
             preserveScroll: true,
             onSuccess() {
-                recipes.value = recipes.value.concat(usePage().props.jetstream.flash.recipes)
+                recipes.value = usePage().props.jetstream.flash.recipes
             }
         })
     }

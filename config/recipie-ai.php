@@ -14,5 +14,5 @@ return [
             ]
         ]
     ],
-    'count' => (int)env('RECIPE_AI_COUNT', 3),
+    'count' => (int)env('RECIPE_AI_COUNT', 10),
 ];
