@@ -59,7 +59,7 @@ const focusTagBox = () => {
 
 <template>
     <div class="" ref="base">
-        <div @click="focusTagBox()" class='border-2 p-0 border-branding-blue-300 dark:border-gray-700 bg-white dark:bg-gray-900 dark:text-gray-300 focus-within:border-branding-blue-500 dark:focus-within:border-branding-blue-600 focus-within:ring-branding-blue-500 dark:focus-within:ring-branding-blue-600 rounded-md shadow-sm'>
+        <div @click="focusTagBox()" class='border-1 p-0.5 border-branding-blue-300 dark:border-gray-700 bg-white dark:bg-gray-900 dark:text-gray-300 focus-within:border-branding-blue-500 dark:focus-within:border-branding-blue-600 focus-within:ring-branding-blue-500 dark:focus-within:ring-branding-blue-600 rounded-md shadow-sm'>
             <div v-for='(tag, index) in tags' :key='tag' class='ml-4 text-sm inline-flex items-center font-bold leading-sm px-3 py-1 bg-branding-blue-500 text-branding-green-700 rounded-full'>
                 {{ tag }}
                 <span class="ml-2 cursor-pointer" @click='removeTag(index)'>x</span>
