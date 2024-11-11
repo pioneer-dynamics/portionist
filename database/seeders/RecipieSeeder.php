@@ -16,7 +16,6 @@ class RecipieSeeder extends Seeder
     public function run(): void
     {
         Recipie::factory(100)
-            ->sequence(fn(Sequence $sequence) => ['title' => 'Amazing cocktail #'.($sequence->index + 1)])
             ->create();
     }
 }

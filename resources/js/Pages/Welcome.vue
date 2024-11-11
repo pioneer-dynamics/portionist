@@ -31,14 +31,14 @@ defineProps({
                     <Link 
                         v-if="$page.props.auth.user" 
                         :href="route('dashboard')" 
-                        class="rounded-md px-3 py-2 text-branding-blue-500 dark:hover:bg-branding-blue-800 ring-1 ring-transparent transition hover:bg-branding-green-600 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-branding-green-600 dark:hover:bg-branding-green-500 dark:focus-visible:ring-white"
+                        class="rounded-md px-3 py-2 text-branding-blue-500 dark:hover:bg-branding-blue-800 ring-1 ring-transparent transition hover:text-branding-blue-400 hover:bg-branding-green-600 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-branding-green-600 dark:hover:bg-branding-green-500 dark:focus-visible:ring-white"
                     >
                         Dashboard
                     </Link>
                     <template v-else>
                             <Link
                                 :href="route('login')"
-                                class="rounded-md px-3 py-2 text-branding-blue-500 dark:hover:bg-branding-blue-800 ring-1 ring-transparent transition hover:bg-branding-green-600 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-branding-green-600 dark:hover:bg-branding-green-500 dark:focus-visible:ring-white"
+                                class="rounded-md px-3 py-2 text-branding-blue-500 dark:hover:bg-branding-blue-800 ring-1 ring-transparent transition hover:text-branding-blue-400 hover:bg-branding-green-600 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-branding-green-600 dark:hover:bg-branding-green-500 dark:focus-visible:ring-white"
                             >
                                 Log in
                             </Link>
@@ -46,7 +46,7 @@ defineProps({
                             <Link
                                 v-if="canRegister"
                                 :href="route('register')"
-                                class="rounded-md px-3 py-2 text-branding-blue-500 dark:hover:bg-branding-blue-800 ring-1 ring-transparent transition hover:bg-branding-green-600 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-branding-green-600 dark:hover:bg-branding-green-500 dark:focus-visible:ring-white"
+                                class="rounded-md px-3 py-2 text-branding-blue-500 dark:hover:bg-branding-blue-800 ring-1 ring-transparent transition hover:text-branding-blue-400 hover:bg-branding-green-600 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-branding-green-600 dark:hover:bg-branding-green-500 dark:focus-visible:ring-white"
                             >
                                 Register
                             </Link>
