@@ -35,7 +35,7 @@
 
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <div class="bg-branding-blue-100 dark:bg-branding-blue-800 overflow-hidden shadow-xl sm:rounded-lg p-4">
+                <div class="bg-branding-blue-100 dark:bg-branding-blue-500 overflow-hidden shadow-xl sm:rounded-lg p-4">
                     <FlatForm @submitted="generateRecipes">
                         <TagInput
                             placeholder="Coma seperated list"

@@ -51,17 +51,11 @@ const logout = () => {
                                 <NavLink :href="route('generate.form')" :active="route().current('generate.form')">
                                     Generate
                                 </NavLink>
-                                <NavLink :href="route('recipes.index', {recipeType: 'cocktail', filter: 'my'})" :active="route().current('recipes.index') && route().params.recipeType === 'cocktail'  && route().params.filter === 'my'">
-                                    My Cocktails
+                                <NavLink :href="route('recipes.list', {filter: 'my'})" :active="route().current('recipes.index') && route().params.filter === 'my'">
+                                    My Recipes
                                 </NavLink>
-                                <NavLink :href="route('recipes.index', {recipeType: 'food', filter: 'my'})" :active="route().current('recipes.index') && route().params.recipeType === 'food'  && route().params.filter === 'my'">
-                                    My Food
-                                </NavLink>
-                                <NavLink :href="route('recipes.index', {recipeType: 'cocktail', filter: 'all'})" :active="route().current('recipes.index') && route().params.recipeType === 'cocktail'  && route().params.filter === 'all'">
-                                    All Cocktails
-                                </NavLink>
-                                <NavLink :href="route('recipes.index', {recipeType: 'food', filter: 'all'})" :active="route().current('recipes.index') && route().params.recipeType === 'food'  && route().params.filter === 'all'">
-                                    All Food
+                                <NavLink :href="route('recipes.list', {filter: 'all'})" :active="route().current('recipes.index') && route().params.filter === 'all'">
+                                    All Recipes
                                 </NavLink>
                             </div>
                         </div>
@@ -204,7 +198,7 @@ const logout = () => {
                 <div :class="{'block': showingNavigationDropdown, 'hidden': ! showingNavigationDropdown}" class="sm:hidden">
                     <div class="pt-2 pb-3 space-y-1">
                         <ResponsiveNavLink :href="route('generate.form')" :active="route().current('generate.form')">
-                            Search
+                            Generate
                         </ResponsiveNavLink>
                     </div>
 
@@ -286,7 +280,7 @@ const logout = () => {
             </nav>
 
             <!-- Page Heading -->
-            <header v-if="$slots.header" class="bg-white dark:bg-gray-800 shadow">
+            <header v-if="$slots.header" class="bg-gray-100 dark:bg-gray-800 shadow">
                 <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
                     <slot name="header" />
                 </div>

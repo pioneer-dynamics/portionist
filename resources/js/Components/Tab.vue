@@ -15,8 +15,8 @@
     })
 
     const classes = computed(() => props.active 
-        ? 'inline-block p-4 text-branding-blue-600 border-b-2 border-branding-green-600 rounded-t-lg active dark:text-branding-blue-500 dark:border-branding-blue-500'
-        : 'inline-block p-4 border-b-2 border-transparent rounded-t-lg hover:text-branding-blue-600 hover:border-branding-blue-300 dark:hover:text-branding-blue-300 hover:bg-branding-green-200 dark:hover:bg-branding-blue-800 dark:text-branding-green-400'
+        ? 'inline-block p-4 text-branding-blue-600 border-b-2 border-branding-green-600 rounded-t-lg active dark:text-branding-green-500 dark:border-branding-green-500'
+        : 'inline-block p-4 border-b-2 border-transparent rounded-t-lg hover:text-branding-blue-600 hover:border-branding-blue-300 dark:hover:text-branding-blue-200 dark:text-branding-blue-400'
     )
 </script>
 <template>
