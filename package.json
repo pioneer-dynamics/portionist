@@ -3,6 +3,7 @@
     "type": "module",
     "scripts": {
         "build": "vite build",
+        "release": "vite build && git add public/build/ -f && git commit -m \"Release build\"",
         "dev": "vite"
     },
     "devDependencies": {
