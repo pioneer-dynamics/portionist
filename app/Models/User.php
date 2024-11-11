@@ -39,6 +39,10 @@ class User extends Authenticatable implements MustVerifyEmail, PasskeyUser
         'password',
     ];
 
+    protected $with = [
+        'passkeys',
+    ];
+
     protected $touches = ['recipies'];
 
     /**
