@@ -50,7 +50,6 @@
                         <TextInput
                             placeholder="Start typing..."
                             class="w-full"
-                            autofocus
                             v-model="form.query"
                             type="search"
                             @search="findRecipes"
