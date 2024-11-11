@@ -17,6 +17,8 @@
         "mathewparet/laravel-git-version": "^1.0",
         "mathewparet/laravel-policy-abilities-export": "^2.0",
         "meilisearch/meilisearch-php": "^1.11",
+        "symfony/http-client": "^7.1",
+        "symfony/postmark-mailer": "^7.1",
         "tightenco/ziggy": "^2.0"
     },
     "require-dev": {
