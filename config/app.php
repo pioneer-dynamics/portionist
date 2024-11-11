@@ -13,7 +13,9 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Laravel'),
+    'name' => env('APP_NAME', 'Portionist'),
+
+    'copyright' => env('APP_COPYRIGHT', 'https://www.linkedin.com/in/mathew-paret-b6b96041'),
 
     /*
     |--------------------------------------------------------------------------

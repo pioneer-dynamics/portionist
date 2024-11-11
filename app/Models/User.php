@@ -2,15 +2,28 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Laravel\Fortify\TwoFactorAuthenticatable;
+use Laravel\Jetstream\HasProfilePhoto;
+use Laravel\Sanctum\HasApiTokens;
 
-class User extends Authenticatable
+/**
+ * @property Illuminate\Database\Eloquent\Relations\HasMany<App\Models\Recipie> $recipies
+ * @property bool $is_super_admin Is this user a super admin
+ */
+class User extends Authenticatable implements MustVerifyEmail
 {
+    use HasApiTokens;
+
     /** @use HasFactory<\Database\Factories\UserFactory> */
-    use HasFactory, Notifiable;
+    use HasFactory;
+    use HasProfilePhoto;
+    use Notifiable;
+    use TwoFactorAuthenticatable;
 
     /**
      * The attributes that are mass assignable.
@@ -23,6 +36,8 @@ class User extends Authenticatable
         'password',
     ];
 
+    protected $touches = ['recipies'];
+
     /**
      * The attributes that should be hidden for serialization.
      *
@@ -31,6 +46,18 @@ class User extends Authenticatable
     protected $hidden = [
         'password',
         'remember_token',
+        'two_factor_recovery_codes',
+        'two_factor_secret',
+    ];
+
+    /**
+     * The accessors to append to the model's array form.
+     *
+     * @var array<int, string>
+     */
+    protected $appends = [
+        'profile_photo_url',
+        'is_super_admin',
     ];
 
     /**
@@ -44,5 +71,22 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    /**
+     * Get all of the recipies for the User
+     * 
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany<\App\Models\Recipie>
+     */
+    public function recipies()
+    {
+        return $this->belongsToMany(Recipie::class)->using(RecipieUser::class);
+    }
+
+    public function isSuperAdmin(): Attribute
+    {
+        return Attribute::make(
+            get: fn () => $this->id === 1,
+        );  
     }
 }
