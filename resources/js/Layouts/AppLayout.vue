@@ -200,6 +200,12 @@ const logout = () => {
                         <ResponsiveNavLink :href="route('generate.form')" :active="route().current('generate.form')">
                             Generate
                         </ResponsiveNavLink>
+                        <ResponsiveNavLink :href="route('recipes.list', {filter: 'my'})" :active="route().current('recipes.index') && route().params.filter === 'my'">
+                            My Recipes
+                        </ResponsiveNavLink>
+                        <ResponsiveNavLink :href="route('recipes.list', {filter: 'all'})" :active="route().current('recipes.index') && route().params.filter === 'all'">
+                            All Recipes
+                        </ResponsiveNavLink>
                     </div>
 
                     <!-- Responsive Settings Options -->
