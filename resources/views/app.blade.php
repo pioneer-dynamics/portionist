@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <link rel="icon" type="image/png" href="{{ Vite::asset('resources/static/logo.png') }}">
+        <link rel="icon" type="image/png" href="{{ Vite::asset('resources/static/logo.small.png') }}">
 
         <meta property="og:title" content="{{ config('app.name') }}" />
         <meta property="og:type" content="website" />
