@@ -25,7 +25,7 @@ const classes = "mr-1 px-4 py-3 text-sm leading-4 border rounded";
         />
         <Link
           v-else
-          class="hover:bg-branding-blue-500 text-branding-green-400 hover:text-branding-green-500 focus:border-branding-blue-500 focus:text-branding-green-500"
+          class="hover:bg-branding-blue-500 text-branding-blue-500 dark:text-branding-green-400 hover:text-branding-green-500 focus:border-branding-blue-500 focus:text-branding-green-500"
           :class="[classes, { 'bg-branding-blue-500 text-branding-green-500': link.active }]"
           :href="link.url"
           v-html="link.label"
