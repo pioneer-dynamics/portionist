@@ -3,7 +3,7 @@
 use App\Services\RecipeAi\OpenAi;
 
 return [
-    'default' => 'openai',
+    'default' => env('RECIPE_AI_CONNECTION', 'openai'),
     'connections' => [
         'openai' => [
             'class' => OpenAi::class,

@@ -8,6 +8,16 @@ use Illuminate\Auth\Access\Response;
 
 class RecipiePolicy
 {
+    public function search(User $user): bool
+    {
+        return true;
+    }
+
+    public function bookmark(User $user, Recipie $recipie): bool
+    {
+        return true;
+    }
+
     /**
      * Determine whether the user can view any models.
      */

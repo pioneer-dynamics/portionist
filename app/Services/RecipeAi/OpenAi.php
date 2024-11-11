@@ -27,7 +27,7 @@ class OpenAi extends RecipeAiProvider implements RecipeAi
         {
             $this->recipes->push([
                 'ingredients' => $cocktail['ingredients'],
-                'name' => $cocktail['name'],
+                'title' => $cocktail['name'],
                 'directions' => $cocktail['directions'],
             ]);
         }
@@ -53,7 +53,7 @@ class OpenAi extends RecipeAiProvider implements RecipeAi
 
     private function prepareQuestion(?int $count): string
     {
-        return __("Invent :number new :type recipies using :ingredients. Respond in json format as an array of ingredients, array of directions and a name for the :type. The root element should be 'cocktails'", [
+        return __("Invent :number new :type recipies using :ingredients. Respond in json format as an array of ingredients, array of directions and a name for the :type. The root element should be 'cocktails'. Do not number the instructions or the ingredients.", [
             'number' =>  $count ?? config('recipie-ai.count'),
             'type' => $this->recipeType,
             'ingredients' => implode(',', $this->ingredients)]);

@@ -41,15 +41,27 @@ const logout = () => {
                         <div class="flex">
                             <!-- Logo -->
                             <div class="shrink-0 flex items-center">
-                                <Link :href="route('dashboard')">
+                                <Link :href="route('generate.form')">
                                     <ApplicationMark class="block h-auto w-20" />
                                 </Link>
                             </div>
 
                             <!-- Navigation Links -->
                             <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                                <NavLink :href="route('dashboard')" :active="route().current('dashboard')">
-                                    Dashboard
+                                <NavLink :href="route('generate.form')" :active="route().current('generate.form')">
+                                    Generate
+                                </NavLink>
+                                <NavLink :href="route('recipes.index', {recipeType: 'cocktail', filter: 'my'})" :active="route().current('recipes.index') && route().params.recipeType === 'cocktail'  && route().params.filter === 'my'">
+                                    My Cocktails
+                                </NavLink>
+                                <NavLink :href="route('recipes.index', {recipeType: 'food', filter: 'my'})" :active="route().current('recipes.index') && route().params.recipeType === 'food'  && route().params.filter === 'my'">
+                                    My Food
+                                </NavLink>
+                                <NavLink :href="route('recipes.index', {recipeType: 'cocktail', filter: 'all'})" :active="route().current('recipes.index') && route().params.recipeType === 'cocktail'  && route().params.filter === 'all'">
+                                    All Cocktails
+                                </NavLink>
+                                <NavLink :href="route('recipes.index', {recipeType: 'food', filter: 'all'})" :active="route().current('recipes.index') && route().params.recipeType === 'food'  && route().params.filter === 'all'">
+                                    All Food
                                 </NavLink>
                             </div>
                         </div>
@@ -191,8 +203,8 @@ const logout = () => {
                 <!-- Responsive Navigation Menu -->
                 <div :class="{'block': showingNavigationDropdown, 'hidden': ! showingNavigationDropdown}" class="sm:hidden">
                     <div class="pt-2 pb-3 space-y-1">
-                        <ResponsiveNavLink :href="route('dashboard')" :active="route().current('dashboard')">
-                            Dashboard
+                        <ResponsiveNavLink :href="route('generate.form')" :active="route().current('generate.form')">
+                            Search
                         </ResponsiveNavLink>
                     </div>
 

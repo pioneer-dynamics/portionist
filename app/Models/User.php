@@ -74,11 +74,11 @@ class User extends Authenticatable implements MustVerifyEmail
     /**
      * Get all of the recipies for the User
      * 
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany<\App\Models\Recipie>
      */
     public function recipies()
     {
-        return $this->hasMany(Recipie::class);
+        return $this->belongsToMany(Recipie::class);
     }
 
     public function isSuperAdmin(): Attribute

@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('recipies', function (Blueprint $table) {
             $table->id();
             $table->string('title');
+            $table->string('recipeType');
             $table->json('ingredients');
             $table->json('directions');
             $table->timestamps();
