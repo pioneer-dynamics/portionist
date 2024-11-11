@@ -10,14 +10,17 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
+use PioneerDynamics\LaravelPasskey\Contracts\PasskeyUser;
+use PioneerDynamics\LaravelPasskey\Traits\HasPasskeys;
 
 /**
  * @property Illuminate\Database\Eloquent\Relations\HasMany<App\Models\Recipie> $recipies
  * @property bool $is_super_admin Is this user a super admin
  */
-class User extends Authenticatable implements MustVerifyEmail
+class User extends Authenticatable implements MustVerifyEmail, PasskeyUser
 {
     use HasApiTokens;
+    use HasPasskeys;
 
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory;
