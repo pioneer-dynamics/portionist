@@ -10,6 +10,7 @@ return [
      */
     'configs' => [
         'app.name',
+        'app.copyright',
     ],
 
     /**

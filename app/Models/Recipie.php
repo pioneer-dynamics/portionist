@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Laravel\Scout\Searchable;
 use mathewparet\LaravelPolicyAbilitiesExport\Traits\ExportsPermissions;
 
 /**
@@ -14,6 +15,7 @@ class Recipie extends Model
 {
     use HasFactory;
     use ExportsPermissions;
+    use Searchable;
 
     protected $fillable = [
         'title',
@@ -39,6 +41,18 @@ class Recipie extends Model
         ];
     }
 
+    public function toSearchableArray(): array
+    {
+        $array = array_merge($this->toArray(), [
+            'users' => $this->users->pluck('id'),
+        ]);
+
+        unset($array['is_saved']);
+        unset($array['can']);
+ 
+        return $array;
+    }
+
     /**
      * Get the user that owns the Recipie
      * 
@@ -52,7 +66,7 @@ class Recipie extends Model
     public function isSaved(): Attribute
     {
         return Attribute::make(
-            get: fn () => $this->users()->where('users.id', request()->user()->id)->exists(),
+            get: fn () => rescue(fn() => $this->users()->where('users.id', request()->user()->id)->exists(), false),
         );
     }
 

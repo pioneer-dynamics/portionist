@@ -36,6 +36,8 @@ class User extends Authenticatable implements MustVerifyEmail
         'password',
     ];
 
+    protected $touches = ['recipies'];
+
     /**
      * The attributes that should be hidden for serialization.
      *
@@ -78,7 +80,7 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     public function recipies()
     {
-        return $this->belongsToMany(Recipie::class);
+        return $this->belongsToMany(Recipie::class)->using(RecipieUser::class);
     }
 
     public function isSuperAdmin(): Attribute

@@ -8,7 +8,7 @@ import DropdownLink from '@/Components/DropdownLink.vue';
 import NavLink from '@/Components/NavLink.vue';
 import ResponsiveNavLink from '@/Components/ResponsiveNavLink.vue';
 
-defineProps({
+const props = defineProps({
     title: String,
 });
 
@@ -290,6 +290,8 @@ const logout = () => {
             <main>
                 <slot />
             </main>
+
+            <footer class="text-center text-gray-600 dark:text-gray-400 pb-4 mx-4">Made with ❤️ by <a :href="$page.props.config.app.copyright" class="text-gray-600 dark:text-gray-400 underline hover:text-branding-blue-400 dark:hover:text-branding-green-400">Mathew Paret</a></footer>
         </div>
     </div>
 </template>
