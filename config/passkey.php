@@ -53,7 +53,7 @@ return [
      * 
      * Where should the users be redirected to after login.
      */
-    'home' => '/dashboard',
+    'home' => '/generate',
 
     
     'database' => [
