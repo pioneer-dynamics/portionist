@@ -575,5 +575,9 @@
   "resources/static/logo.png": {
     "file": "assets/logo-D3r0qduq.png",
     "src": "resources/static/logo.png"
+  },
+  "resources/static/logo.small.png": {
+    "file": "assets/logo.small-Bxfg_VLW.png",
+    "src": "resources/static/logo.small.png"
   }
 }
