@@ -33,7 +33,7 @@ defineProps({
                         :href="route('generate.form')" 
                         class="rounded-md px-3 py-2 text-branding-blue-500 dark:hover:bg-branding-blue-800 ring-1 ring-transparent transition hover:text-branding-blue-400 hover:bg-branding-green-600 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-branding-green-600 dark:hover:bg-branding-green-500 dark:focus-visible:ring-white"
                     >
-                        Search / Generate Recipies
+                        Generate Recipies
                     </Link>
                     <template v-else>
                             <Link
