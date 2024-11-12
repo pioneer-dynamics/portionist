@@ -2,22 +2,20 @@
 
 namespace Database\Factories;
 
-use App\Models\User;
-use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Recipie>
  */
 class RecipieFactory extends Factory
 {
-
     private $ingredients = [
-        'gin', 'vodka', 'whiskey', 'rum', 'tequila', 'cognac', 'brandy', 'beer', 'red wine'
+        'gin', 'vodka', 'whiskey', 'rum', 'tequila', 'cognac', 'brandy', 'beer', 'red wine',
     ];
 
     private $adjectives = [
-        'amazing', 'dashing', 'fancy', 'funny', 'gorgeous', 'knockout', 'mystical', 'sophisticated', 'superb', 'wonderful'
+        'amazing', 'dashing', 'fancy', 'funny', 'gorgeous', 'knockout', 'mystical', 'sophisticated', 'superb', 'wonderful',
     ];
 
     /**
@@ -27,14 +25,14 @@ class RecipieFactory extends Factory
      */
     public function definition(): array
     {
-        $ingredients = $this->faker->randomElements($this->ingredients, rand(3,7));
+        $ingredients = $this->faker->randomElements($this->ingredients, rand(3, 7));
 
-        $title = Str::title(fake()->randomElement($this->adjectives) . ' ' . fake()->randomElement($ingredients));
+        $title = Str::title(fake()->randomElement($this->adjectives).' '.fake()->randomElement($ingredients));
 
         return [
             'title' => $title,
             'ingredients' => $ingredients,
-            'directions' => $this->faker->sentences(rand(3,7)),
+            'directions' => $this->faker->sentences(rand(3, 7)),
         ];
     }
 }

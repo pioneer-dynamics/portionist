@@ -20,10 +20,11 @@ use PioneerDynamics\LaravelPasskey\Traits\HasPasskeys;
 class User extends Authenticatable implements MustVerifyEmail, PasskeyUser
 {
     use HasApiTokens;
-    use HasPasskeys;
-
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory;
+
+    use HasPasskeys;
+
     use HasProfilePhoto;
     use Notifiable;
     use TwoFactorAuthenticatable;
@@ -82,7 +83,7 @@ class User extends Authenticatable implements MustVerifyEmail, PasskeyUser
 
     /**
      * Get all of the recipies for the User
-     * 
+     *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany<\App\Models\Recipie>
      */
     public function recipies()
@@ -94,6 +95,6 @@ class User extends Authenticatable implements MustVerifyEmail, PasskeyUser
     {
         return Attribute::make(
             get: fn () => $this->id === 1,
-        );  
+        );
     }
 }

@@ -1,11 +1,9 @@
 <?php
 
-use Inertia\Inertia;
-use Illuminate\Support\Facades\Route;
-use Illuminate\Foundation\Application;
-use App\Http\Controllers\RecipieController;
 use App\Http\Controllers\HomePageController;
+use App\Http\Controllers\RecipieController;
 use App\Http\Controllers\SearchRecipeController;
+use Illuminate\Support\Facades\Route;
 
 Route::get('/', HomePageController::class)->name('home');
 
