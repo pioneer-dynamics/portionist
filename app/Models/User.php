@@ -2,16 +2,17 @@
 
 namespace App\Models;
 
+use Laravel\Sanctum\HasApiTokens;
+use App\Notifications\VerifyEmail;
+use Laravel\Jetstream\HasProfilePhoto;
+use Illuminate\Notifications\Notifiable;
+use Laravel\Fortify\TwoFactorAuthenticatable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Laravel\Fortify\TwoFactorAuthenticatable;
-use Laravel\Jetstream\HasProfilePhoto;
-use Laravel\Sanctum\HasApiTokens;
-use PioneerDynamics\LaravelPasskey\Contracts\PasskeyUser;
 use PioneerDynamics\LaravelPasskey\Traits\HasPasskeys;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use PioneerDynamics\LaravelPasskey\Contracts\PasskeyUser;
 
 /**
  * @property Illuminate\Database\Eloquent\Relations\HasMany<App\Models\Recipie> $recipies
@@ -96,5 +97,15 @@ class User extends Authenticatable implements MustVerifyEmail, PasskeyUser
         return Attribute::make(
             get: fn () => $this->id === 1,
         );
+    }
+
+    /**
+     * Override verification notification so that it is sent via queue
+     *
+     * @return void
+     */
+    public function sendEmailVerificationNotification()
+    {
+        $this->notify(new VerifyEmail);
     }
 }
