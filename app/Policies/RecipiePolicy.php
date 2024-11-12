@@ -4,7 +4,6 @@ namespace App\Policies;
 
 use App\Models\Recipie;
 use App\Models\User;
-use Illuminate\Auth\Access\Response;
 
 class RecipiePolicy
 {
@@ -47,8 +46,9 @@ class RecipiePolicy
      */
     public function update(User $user, Recipie $recipie): bool
     {
-        if($user->is_super_admin)
+        if ($user->is_super_admin) {
             return true;
+        }
 
         return false;
     }
@@ -58,8 +58,9 @@ class RecipiePolicy
      */
     public function delete(User $user, Recipie $recipie): bool
     {
-        if($user->is_super_admin)
+        if ($user->is_super_admin) {
             return true;
+        }
 
         return false;
     }
@@ -69,8 +70,9 @@ class RecipiePolicy
      */
     public function restore(User $user, Recipie $recipie): bool
     {
-        if($user->is_super_admin)
+        if ($user->is_super_admin) {
             return true;
+        }
 
         return false;
     }
@@ -80,8 +82,9 @@ class RecipiePolicy
      */
     public function forceDelete(User $user, Recipie $recipie): bool
     {
-        if($user->is_super_admin)
+        if ($user->is_super_admin) {
             return true;
+        }
 
         return false;
     }

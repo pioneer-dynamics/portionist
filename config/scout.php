@@ -140,7 +140,7 @@ return [
                 'filterableAttributes' => ['recipeType', 'users'],
                 'sortableAttributes' => ['created_at'],
                 'searchableAttributes' => ['title', 'ingredients'],
-            ]
+            ],
         ],
     ],
 
