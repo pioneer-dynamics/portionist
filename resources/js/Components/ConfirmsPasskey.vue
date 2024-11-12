@@ -70,6 +70,7 @@
             })
             .catch((e) => {
                 console.log(e);
+                operationCancelled();
                 authorityConfirmed.value = false;
             })
     }
