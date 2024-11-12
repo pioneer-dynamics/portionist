@@ -3,7 +3,7 @@
     "type": "module",
     "scripts": {
         "build": "vite build",
-        "release": "./vendor/bin/pint && vite build && git add ./public/build/ -f",
+        "release": "./vendor/bin/pint && vite build && git add ./public/build/ -f && git commit -m \"Production build for $(git status | head -1 | cut -d'/' -f2)\"",
         "dev": "vite"
     },
     "devDependencies": {
