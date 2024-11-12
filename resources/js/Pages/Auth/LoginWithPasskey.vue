@@ -125,7 +125,6 @@ const cancelPasskeyLogin = (failed) => {
 
             </div>
             <PrimaryButton @click.prevent="passwordLogin" class="w-full mt-2 justify-center" :class="{ 'opacity-25': form.processing || isProcessing }" :disabled="form.processing || isProcessing">
-                <!-- {{ isPasswordLogin ? 'Login' : 'Next' }} -->
                   Login
             </PrimaryButton>
             <div class="flex items-center justify-center my-2">
