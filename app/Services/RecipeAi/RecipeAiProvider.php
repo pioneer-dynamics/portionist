@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Services\RecipeAi;
 
 use App\Contracts\RecipeAi;
@@ -12,7 +13,7 @@ abstract class RecipeAiProvider implements RecipeAi
     protected $recipes;
 
     protected $ingredients = [];
-    
+
     protected $recipeType = null;
 
     public function __construct(protected array $config)

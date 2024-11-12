@@ -2,15 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Inertia\Inertia;
-use App\Models\Recipie;
-use Illuminate\Http\Request;
-use App\Http\Requests\SearchRecipeRequest;
-use App\Http\Requests\StoreRecipieRequest;
-use App\Http\Requests\UpdateRecipieRequest;
 use App\Http\Requests\BookmarkRecipieRequest;
 use App\Http\Requests\ListSavedRecipesRequest;
 use App\Http\Resources\RecipieResourceCollection;
+use App\Models\Recipie;
+use Illuminate\Http\Request;
+use Inertia\Inertia;
 
 class RecipieController extends Controller
 {
@@ -22,35 +19,33 @@ class RecipieController extends Controller
     private function search(Request $request, $recipeType, $filter)
     {
         $recipes = Recipie::search($request->get('query'))
-                        ->where('recipeType', $recipeType);
-            
-        if($filter === 'my')
-        {
+            ->where('recipeType', $recipeType);
+
+        if ($filter === 'my') {
             $recipes = $recipes->where('users', $request->user()->id);
         }
-        
+
         return $recipes;
     }
 
     private function getAll(Request $request, $recipeType, $filter)
     {
-        $recipes = match($filter) 
-            {
-                'my' => $request->user()->recipies(),
-                'all' => Recipie::query(),
-            };
+        $recipes = match ($filter) {
+            'my' => $request->user()->recipies(),
+            'all' => Recipie::query(),
+        };
 
         $recipes = $recipes->type($recipeType);
 
         return $recipes;
     }
-    
+
     /**
      * Display a listing of the resource.
      */
     public function index(ListSavedRecipesRequest $request, $filter, $recipeType)
     {
-        $recipes = !blank($request->get('query'))
+        $recipes = ! blank($request->get('query'))
             ? $this->search($request, $recipeType, $filter)
             : $this->getAll($request, $recipeType, $filter);
 

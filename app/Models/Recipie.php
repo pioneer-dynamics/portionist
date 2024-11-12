@@ -13,8 +13,8 @@ use mathewparet\LaravelPolicyAbilitiesExport\Traits\ExportsPermissions;
  */
 class Recipie extends Model
 {
-    use HasFactory;
     use ExportsPermissions;
+    use HasFactory;
     use Searchable;
 
     protected $fillable = [
@@ -25,7 +25,7 @@ class Recipie extends Model
     ];
 
     protected $appends = [
-        'is_saved'
+        'is_saved',
     ];
 
     /**
@@ -49,13 +49,13 @@ class Recipie extends Model
 
         unset($array['is_saved']);
         unset($array['can']);
- 
+
         return $array;
     }
 
     /**
      * Get the user that owns the Recipie
-     * 
+     *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany<\App\Models\User>
      */
     public function users()
@@ -66,7 +66,7 @@ class Recipie extends Model
     public function isSaved(): Attribute
     {
         return Attribute::make(
-            get: fn () => rescue(fn() => $this->users()->where('users.id', request()->user()->id)->exists(), false),
+            get: fn () => rescue(fn () => $this->users()->where('users.id', request()->user()->id)->exists(), false),
         );
     }
 

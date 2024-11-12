@@ -3,7 +3,6 @@
 namespace App\Providers;
 
 use App\Contracts\RecipeAi;
-use App\Services\RecipeAi\OpenAi;
 use Illuminate\Support\ServiceProvider;
 
 class AiServiceProvider extends ServiceProvider
@@ -14,11 +13,11 @@ class AiServiceProvider extends ServiceProvider
     public function register(): void
     {
         $this->app->singleton(RecipeAi::class, function ($app) {
-            
+
             $connection = $this->getDefaultConnection();
 
             $connection_class = $connection['class'];
-            
+
             return new $connection_class($connection['config']);
         });
     }
