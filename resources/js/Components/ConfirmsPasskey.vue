@@ -58,11 +58,13 @@
                             onSuccess: () => {
                                 if(props.mode == 'login' || usePage().props.jetstream.flash.verified) {
                                     authorityConfirmed.value = true;
+                                    operationSuccess();
                                 }
                             },
                             onError: (e) => {
                                 console.error(e);
                                 authorityConfirmed.value = false;
+                                operationCancelled();
                             }
                 });
             })
@@ -109,5 +111,5 @@
 
 </script>
 <template>
-   
+   <span v-if="confirmingPasskey"></span>
 </template>
