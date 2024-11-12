@@ -20,11 +20,11 @@ use PioneerDynamics\LaravelPasskey\Traits\HasPasskeys;
 class User extends Authenticatable implements MustVerifyEmail, PasskeyUser
 {
     use HasApiTokens;
+
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory;
 
     use HasPasskeys;
-
     use HasProfilePhoto;
     use Notifiable;
     use TwoFactorAuthenticatable;
