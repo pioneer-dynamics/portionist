@@ -23,12 +23,12 @@ class OpenAi extends RecipeAiProvider implements RecipeAi
 
         $response = json_decode($response->json('choices.0.message.content'), true);
 
-        foreach($response['cocktails'] as $cocktail)
+        foreach($response['recipes'] as $recipes)
         {
             $this->recipes->push([
-                'ingredients' => $cocktail['ingredients'],
-                'title' => $cocktail['name'],
-                'directions' => $cocktail['directions'],
+                'ingredients' => $recipes['ingredients'],
+                'title' => $recipes['name'],
+                'directions' => $recipes['directions'],
             ]);
         }
     }
