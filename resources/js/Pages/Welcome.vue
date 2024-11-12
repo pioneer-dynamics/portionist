@@ -58,7 +58,7 @@ defineProps({
     <main class="container mx-auto p-4 pt-6">
         <section class="bg-branding-blue-100 dark:bg-branding-blue-800 rounded shadow-md p-4 text-black dark:text-white">
             <h1 class="text-3xl font-bold mb-4 text-color">Discover new flavors with <span class="text-branding-green-500 bg-branding-blue-500 px-1 rounded">portion.ist</span></h1>
-            <p class="text-lg text-gray-600 dark:text-gray-400 mb-6">Generate interesting mixes of cocktails, mocktails, and food based on ingredients you have. We already have <span class="font-bold text-branding-green-500 bg-branding-blue-500 px-1 rounded">{{ totalRecipes }}</span> recipes in our database and you can generate more!!!.</p>
+            <p class="text-lg text-gray-600 dark:text-gray-400 mb-6">Generate interesting mixes of cocktails, and food based on ingredients you have. We already have <span class="font-bold text-branding-green-500 bg-branding-blue-500 px-1 rounded">{{ totalRecipes }}</span> recipes in our database and you can generate more!!!.</p>
             <PrimaryLink :href="route('generate.form')">Get started</PrimaryLink>
         </section>
         <section class="mt-6">
