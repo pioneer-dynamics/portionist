@@ -41,19 +41,65 @@ class OpenAi extends RecipeAiProvider implements RecipeAi
             'model' => $this->config['engine'],
             'messages' => [
                 [
+                    'role' => 'system',
+                    'content' => "You are a helpful bartender and chef. You will be provided with the ingredients, the recipe type (cocktail or food), and the number of recipies to be generated. You need to create new recipies with the ingredients provided for the recipie type specified. For each recipe provide a name, ingredients, and directions."
+                ],
+                [
                     'role' => 'user',
                     'content' => $question
                 ]
             ],
             'response_format' => [
-                'type' => 'json_object'
+                'type' => 'json_schema',
+                'json_schema' => [
+                    "name" => "recipes",
+                    "schema" => [
+                        "type" => "object",
+                        "properties" => [
+                            "recipes" => [
+                                "type" => "array",
+                                "items" => [
+                                    "type" => "object",
+                                    "properties" => [
+                                        "name" => [
+                                            "type" => "string"
+                                        ],
+                                        "ingredients" => [
+                                            "type" => "array",
+                                            "items" => [
+                                                "type" => "string"
+                                            ]
+                                        ],
+                                        "directions" => [
+                                            "type" => "array",
+                                            "items" => [
+                                                "type" => "string"
+                                            ]
+                                        ]
+                                    ],
+                                    "required" => [
+                                        "name",
+                                        "directions",
+                                        "ingredients"
+                                    ],
+                                    "additionalProperties" => false
+                                ]
+                            ]
+                        ],
+                        "required" => [
+                            "recipes"
+                        ],
+                        "additionalProperties" => false
+                    ],
+                    "strict" => true
+                ]
             ]
         ];
     }
 
     private function prepareQuestion(?int $count): string
     {
-        return __("Invent :number new :type recipies using :ingredients. Respond in json format as an array of ingredients, array of directions and a name for the :type. The root element should be 'cocktails'. Do not number the instructions or the ingredients.", [
+        return __("Invent :number new :type recipies using :ingredients.", [
             'number' =>  $count ?? config('recipie-ai.count'),
             'type' => $this->recipeType,
             'ingredients' => implode(',', $this->ingredients)]);
