@@ -3482,16 +3482,16 @@
         },
         {
             "name": "pioneer-dynamics/laravel-passkey",
-            "version": "v1.0.14",
+            "version": "v1.0.15",
             "source": {
                 "type": "git",
                 "url": "https://github.com/pioneer-dynamics/laravel-passkey.git",
-                "reference": "87416c1149da7011d7b79395f0f84f51a3787765"
+                "reference": "ae9da22d1901ebe6c51e820c92937828868246c2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/pioneer-dynamics/laravel-passkey/zipball/87416c1149da7011d7b79395f0f84f51a3787765",
-                "reference": "87416c1149da7011d7b79395f0f84f51a3787765",
+                "url": "https://api.github.com/repos/pioneer-dynamics/laravel-passkey/zipball/ae9da22d1901ebe6c51e820c92937828868246c2",
+                "reference": "ae9da22d1901ebe6c51e820c92937828868246c2",
                 "shasum": ""
             },
             "require": {
@@ -3524,9 +3524,9 @@
             "description": "Easy Passkey integration for Laravel",
             "support": {
                 "issues": "https://github.com/pioneer-dynamics/laravel-passkey/issues",
-                "source": "https://github.com/pioneer-dynamics/laravel-passkey/tree/v1.0.14"
+                "source": "https://github.com/pioneer-dynamics/laravel-passkey/tree/v1.0.15"
             },
-            "time": "2024-11-12T01:50:36+00:00"
+            "time": "2024-11-12T03:08:55+00:00"
         },
         {
             "name": "pragmarx/google2fa",
