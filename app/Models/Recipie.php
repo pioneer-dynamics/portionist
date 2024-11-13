@@ -66,7 +66,14 @@ class Recipie extends Model
     public function isSaved(): Attribute
     {
         return Attribute::make(
-            get: fn () => rescue(fn () => $this->users()->where('users.id', request()->user()->id)->exists(), false),
+            get: function() {
+                if(request()->user() !== null) {
+                    return $this->users()->where('users.id', request()->user()->id)->exists();
+                }
+                else {
+                    return false;
+                }
+            },
         );
     }
 
