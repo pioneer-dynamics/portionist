@@ -33,7 +33,7 @@ const logout = () => {
 
         <Banner />
 
-        <div class="min-h-screen bg:branding-blue-300 dark:bg-branding-blue-900">
+        <div class="min-h-screen bg-gray-50 dark:bg-gray-900">
             <nav class="bg-white dark:bg-branding-blue-600 border-b border-barnding-blue-100 dark:border-branding-blue-700">
                 <!-- Primary Navigation Menu -->
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8  py-4">
@@ -286,7 +286,7 @@ const logout = () => {
             </nav>
 
             <!-- Page Heading -->
-            <header v-if="$slots.header" class="bg-gray-100 dark:bg-gray-800 shadow">
+            <header v-if="$slots.header" class="bg-gray-50 dark:bg-gray-800 shadow">
                 <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
                     <slot name="header" />
                 </div>
@@ -297,7 +297,7 @@ const logout = () => {
                 <slot />
             </main>
 
-            <footer class="text-center text-gray-600 dark:text-gray-400 pb-4 mx-4">Made with ❤️ by <a target="_blank" :href="$page.props.config.app.copyright" class="text-gray-600 dark:text-gray-400 underline hover:text-branding-blue-400 dark:hover:text-branding-green-400">Mathew Paret</a></footer>
+            <footer class="text-center text-gray-600 dark:text-gray-400 pt-4 pb-4 mx-4">Made with ❤️ by <a target="_blank" :href="$page.props.config.app.copyright" class="text-gray-600 dark:text-gray-400 underline hover:text-branding-blue-400 dark:hover:text-branding-green-400">Mathew Paret</a></footer>
         </div>
     </div>
 </template>
