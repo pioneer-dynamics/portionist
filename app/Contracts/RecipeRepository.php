@@ -1,11 +1,12 @@
 <?php
+
 namespace App\Contracts;
 
-use App\Models\User;
 use App\Models\Recipie;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Builder;
-use Laravel\Scout\Builder as ScoutBuilder;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Laravel\Scout\Builder as ScoutBuilder;
 
 interface RecipeRepository
 {

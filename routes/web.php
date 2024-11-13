@@ -1,8 +1,8 @@
 <?php
 
+use App\Http\Controllers\GenerateRecipeController;
 use App\Http\Controllers\HomePageController;
 use App\Http\Controllers\RecipieController;
-use App\Http\Controllers\GenerateRecipeController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', HomePageController::class)->name('home');

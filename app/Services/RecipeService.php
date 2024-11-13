@@ -1,16 +1,14 @@
 <?php
+
 namespace App\Services;
 
-use App\Models\Recipie;
 use App\Contracts\RecipeAi;
 use App\Contracts\RecipeService as RecipeServieContract;
+use App\Models\Recipie;
 
 class RecipeService implements RecipeServieContract
 {
-    public function __construct(private RecipeAi $recipeAi)
-    {
-        
-    }
+    public function __construct(private RecipeAi $recipeAi) {}
 
     public function generate(array $ingredients, string $recipeType): array
     {

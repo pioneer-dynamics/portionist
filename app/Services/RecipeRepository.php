@@ -1,12 +1,13 @@
 <?php
+
 namespace App\Services;
 
-use App\Models\User;
-use App\Models\Recipie;
-use Illuminate\Database\Eloquent\Builder;
-use Laravel\Scout\Builder as ScoutBuilder;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use App\Contracts\RecipeRepository as RecipeRepositoryContract;
+use App\Models\Recipie;
+use App\Models\User;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Laravel\Scout\Builder as ScoutBuilder;
 
 class RecipeRepository implements RecipeRepositoryContract
 {
