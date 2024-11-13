@@ -2,20 +2,16 @@
 
 namespace App\Http\Controllers\API;
 
-use App\Models\Recipie;
-use Illuminate\Http\Request;
 use App\Contracts\RecipeRepository;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\BookmarkRecipieRequest;
 use App\Http\Requests\ListSavedRecipesRequest;
 use App\Http\Resources\RecipieResourceCollection;
+use App\Models\Recipie;
 
 class RecipeApiController extends Controller
 {
-    public function __construct(private RecipeRepository $recipeRepository)
-    {
-        
-    }
+    public function __construct(private RecipeRepository $recipeRepository) {}
 
     public function bookmark(BookmarkRecipieRequest $request, Recipie $recipe)
     {

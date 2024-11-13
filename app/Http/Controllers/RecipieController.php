@@ -7,15 +7,11 @@ use App\Http\Requests\BookmarkRecipieRequest;
 use App\Http\Requests\ListSavedRecipesRequest;
 use App\Http\Resources\RecipieResourceCollection;
 use App\Models\Recipie;
-use Illuminate\Http\Request;
 use Inertia\Inertia;
 
 class RecipieController extends Controller
 {
-    public function __construct(private RecipeRepository $recipeRepository)
-    {
-        
-    }
+    public function __construct(private RecipeRepository $recipeRepository) {}
 
     public function bookmark(BookmarkRecipieRequest $request, Recipie $recipe)
     {

@@ -2,13 +2,13 @@
 
 namespace App\Providers;
 
+use App\Contracts\RecipeRepository as RecipeRepositoryContract;
+use App\Contracts\RecipeService as RecipeServiceContract;
 use App\Models\User;
+use App\Services\RecipeRepository;
 use App\Services\RecipeService;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
-use App\Contracts\RecipeService as RecipeServiceContract;
-use App\Contracts\RecipeRepository as RecipeRepositoryContract;
-use App\Services\RecipeRepository;
 
 class AppServiceProvider extends ServiceProvider
 {

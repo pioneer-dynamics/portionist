@@ -2,13 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Inertia\Inertia;
-use App\Models\Recipie;
-use App\Contracts\RecipeAi;
 use App\Contracts\RecipeService;
-use App\Http\Requests\SearchRecipeRequest;
 use App\Http\Requests\GenerateRecipeRequest;
-use App\Http\Controllers\AIP\GenerateRecipeApiController;
+use App\Http\Requests\SearchRecipeRequest;
+use Inertia\Inertia;
 
 class GenerateRecipeController extends Controller
 {

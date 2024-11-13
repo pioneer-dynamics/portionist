@@ -111,7 +111,7 @@ class OpenAi extends RecipeAiProvider implements RecipeAi
 
         return [
             'role' => 'user',
-            'content' => $question
+            'content' => $question,
         ];
     }
 }
