@@ -33,75 +33,85 @@ class OpenAi extends RecipeAiProvider implements RecipeAi
         }
     }
 
-    private function prepareRequest(?int $count): array
+    private function getResponseFormat(): array
     {
-        $question = $this->prepareQuestion($count);
-
         return [
-            'model' => $this->config['engine'],
-            'messages' => [
-                [
-                    'role' => 'system',
-                    'content' => 'You are a helpful bartender and chef. You will be provided with the ingredients, the recipe type (cocktail or food), and the number of recipies to be generated. You need to create new recipies with the ingredients provided for the recipie type specified. For each recipe provide a name, ingredients, and directions.',
-                ],
-                [
-                    'role' => 'user',
-                    'content' => $question,
-                ],
-            ],
-            'response_format' => [
-                'type' => 'json_schema',
-                'json_schema' => [
-                    'name' => 'recipes',
-                    'schema' => [
-                        'type' => 'object',
-                        'properties' => [
-                            'recipes' => [
-                                'type' => 'array',
-                                'items' => [
-                                    'type' => 'object',
-                                    'properties' => [
-                                        'name' => [
+            'type' => 'json_schema',
+            'json_schema' => [
+                'name' => 'recipes',
+                'schema' => [
+                    'type' => 'object',
+                    'properties' => [
+                        'recipes' => [
+                            'type' => 'array',
+                            'items' => [
+                                'type' => 'object',
+                                'properties' => [
+                                    'name' => [
+                                        'type' => 'string',
+                                    ],
+                                    'ingredients' => [
+                                        'type' => 'array',
+                                        'items' => [
                                             'type' => 'string',
                                         ],
-                                        'ingredients' => [
-                                            'type' => 'array',
-                                            'items' => [
-                                                'type' => 'string',
-                                            ],
-                                        ],
-                                        'directions' => [
-                                            'type' => 'array',
-                                            'items' => [
-                                                'type' => 'string',
-                                            ],
+                                    ],
+                                    'directions' => [
+                                        'type' => 'array',
+                                        'items' => [
+                                            'type' => 'string',
                                         ],
                                     ],
-                                    'required' => [
-                                        'name',
-                                        'directions',
-                                        'ingredients',
-                                    ],
-                                    'additionalProperties' => false,
                                 ],
+                                'required' => [
+                                    'name',
+                                    'directions',
+                                    'ingredients',
+                                ],
+                                'additionalProperties' => false,
                             ],
                         ],
-                        'required' => [
-                            'recipes',
-                        ],
-                        'additionalProperties' => false,
                     ],
-                    'strict' => true,
+                    'required' => [
+                        'recipes',
+                    ],
+                    'additionalProperties' => false,
                 ],
+                'strict' => true,
             ],
         ];
     }
 
-    private function prepareQuestion(?int $count): string
+    private function prepareRequest(?int $count): array
     {
-        return __('Invent :number new :type recipies using :ingredients.', [
+        return [
+            'model' => $this->config['engine'],
+            'messages' => [
+                $this->prepareInstructions(),
+                $this->prepareUserInput($count),
+            ],
+            'response_format' => $this->getResponseFormat(),
+        ];
+    }
+
+    private function prepareInstructions(): array
+    {
+        return [
+            'role' => 'system',
+            'content' => 'You are a helpful bartender and chef. You will be provided with the ingredients, the recipe type (cocktail or food), and the number of recipies to be generated. You need to create new recipies with the ingredients provided for the recipie type specified. For each recipe provide a name, ingredients, and directions.',
+        ];
+    }
+
+    private function prepareUserInput(?int $count): array
+    {
+        $question = __('Invent :number new :type recipies using :ingredients.', [
             'number' => $count ?? config('recipie-ai.count'),
             'type' => $this->recipeType,
             'ingredients' => implode(',', $this->ingredients)]);
+
+        return [
+            'role' => 'user',
+            'content' => $question,
+        ];
     }
 }

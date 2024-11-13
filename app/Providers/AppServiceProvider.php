@@ -2,7 +2,11 @@
 
 namespace App\Providers;
 
+use App\Contracts\RecipeRepository as RecipeRepositoryContract;
+use App\Contracts\RecipeService as RecipeServiceContract;
 use App\Models\User;
+use App\Services\RecipeRepository;
+use App\Services\RecipeService;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
 
@@ -13,7 +17,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        $this->registerRepositoryServices();
     }
 
     /**
@@ -22,6 +26,12 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         $this->definePulseAccessPolicy();
+    }
+
+    private function registerRepositoryServices()
+    {
+        $this->app->singleton(RecipeServiceContract::class, RecipeService::class);
+        $this->app->singleton(RecipeRepositoryContract::class, RecipeRepository::class);
     }
 
     private function definePulseAccessPolicy()
