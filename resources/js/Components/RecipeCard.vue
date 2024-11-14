@@ -20,8 +20,8 @@
     onMounted(function() {
         saved.value = props.recipe.is_saved
         liked.value = props.recipe.is_liked
-        num_likes.value = props.recipe.num_dislikes
-        num_dislikes.value = props.recipe.num_likes
+        num_likes.value = props.recipe.num_likes
+        num_dislikes.value = props.recipe.num_dislikes
     })
 
     const disliked = computed(() => {
