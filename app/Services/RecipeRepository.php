@@ -46,7 +46,7 @@ class RecipeRepository implements RecipeRepositoryContract
             'all' => Recipie::query(),
         };
 
-        $recipes = $recipes->type($recipeType);
+        $recipes = $recipes->type($recipeType)->orderBy('created_at', 'desc');
 
         return $recipes;
     }
