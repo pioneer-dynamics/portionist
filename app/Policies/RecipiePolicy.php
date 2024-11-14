@@ -7,7 +7,7 @@ use App\Models\User;
 
 class RecipiePolicy
 {
-    public function search(User $user): bool
+    public function generate(User $user): bool
     {
         return true;
     }

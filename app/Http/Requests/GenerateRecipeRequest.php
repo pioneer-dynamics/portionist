@@ -12,7 +12,7 @@ class GenerateRecipeRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return $this->user()->can('search', Recipie::class);
+        return $this->user()->can('generate', Recipie::class);
     }
 
     /**

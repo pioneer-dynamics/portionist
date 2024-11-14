@@ -13,7 +13,7 @@ Route::middleware([
     'verified',
 ])->group(function () {
     Route::get('generate', [GenerateRecipeController::class, 'form'])->name('generate.form');
-    Route::post('generate', [GenerateRecipeController::class, 'search'])->name('generate.action');
+    Route::post('generate', [GenerateRecipeController::class, 'generate'])->name('generate.action');
     Route::post('recipes/{recipe}/bookmark', [RecipieController::class, 'bookmark'])->name('recipes.toggleBookmark');
     Route::post('recipes/{recipe}/like', [RecipieController::class, 'like'])->name('recipes.like');
     Route::post('recipes/{recipe}/dislike', [RecipieController::class, 'dislike'])->name('recipes.dislike');

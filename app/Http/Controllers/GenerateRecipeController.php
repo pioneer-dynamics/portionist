@@ -15,7 +15,7 @@ class GenerateRecipeController extends Controller
         return Inertia::render('Recipe/Generate');
     }
 
-    public function search(GenerateRecipeRequest $request, RecipeService $recipeService)
+    public function generate(GenerateRecipeRequest $request, RecipeService $recipeService)
     {
         $recipes = $recipeService->generate($request->ingredients, $request->recipeType);
 
