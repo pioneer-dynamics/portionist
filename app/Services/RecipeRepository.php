@@ -11,9 +11,11 @@ use Laravel\Scout\Builder as ScoutBuilder;
 
 class RecipeRepository implements RecipeRepositoryContract
 {
-    public function bookmark(Recipie $recipe, User $user): array
+    public function bookmark(Recipie $recipe, User $user): Recipie
     {
-        return $recipe->users()->toggle($user->id);
+        $recipe->users()->toggle($user->id);
+
+        return $recipe->fresh();
     }
 
     public function list(User $user, string $recipeType, string $filter, ?string $query): BelongsToMany|Builder|ScoutBuilder
@@ -44,8 +46,34 @@ class RecipeRepository implements RecipeRepositoryContract
             'all' => Recipie::query(),
         };
 
-        $recipes = $recipes->type($recipeType);
+        $recipes = $recipes->type($recipeType)->orderBy('created_at', 'desc');
 
         return $recipes;
+    }
+
+    public function like(Recipie $recipie, User $user): Recipie
+    {
+        if ($recipie->isLikedBy($user)) {
+            $recipie->likes()->user($user)->delete();
+        } else {
+            $recipie->likes()->user($user)->updateOrCreate(['user_id' => $user->id], ['liked' => true]);
+        }
+
+        $recipie->touch();
+
+        return $recipie->fresh();
+    }
+
+    public function dislike(Recipie $recipie, User $user): Recipie
+    {
+        if ($recipie->isDislikedBy($user)) {
+            $recipie->likes()->user($user)->delete();
+        } else {
+            $recipie->likes()->user($user)->updateOrCreate(['user_id' => $user->id], ['liked' => false]);
+        }
+
+        $recipie->touch();
+
+        return $recipie->fresh();
     }
 }
