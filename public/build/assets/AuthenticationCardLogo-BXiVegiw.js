@@ -1,0 +1,1 @@
+import{o as t,c as e,w as a,a as r,u as o,j as s}from"./app-CHDW4TXQ.js";import{L as c}from"./logo-B0rZE226.js";const i=["src"],m={__name:"AuthenticationCardLogo",setup(n){return(_,h)=>(t(),e(o(s),{href:"/"},{default:a(()=>[r("img",{src:o(c),alt:"Portion.ist logo",width:"100",height:"100"},null,8,i)]),_:1}))}};export{m as _};
