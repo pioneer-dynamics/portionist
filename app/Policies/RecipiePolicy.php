@@ -16,6 +16,16 @@ class RecipiePolicy
     {
         return true;
     }
+    
+    public function like(User $user, Recipie $recipie): bool
+    {
+        return true;
+    }
+    
+    public function dislike(User $user, Recipie $recipie): bool
+    {
+        return true;
+    }
 
     /**
      * Determine whether the user can view any models.

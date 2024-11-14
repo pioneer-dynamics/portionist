@@ -18,6 +18,7 @@ use PioneerDynamics\LaravelPasskey\Traits\HasPasskeys;
 /**
  * @property Illuminate\Database\Eloquent\Relations\HasMany<App\Models\Recipie> $recipies
  * @property bool $is_super_admin Is this user a super admin
+ * @property Illuminate\Database\Eloquent\Collection<\App\Models\Like> $likes
  */
 class User extends Authenticatable implements MustVerifyEmail, PasskeyUser
 {
@@ -82,7 +83,7 @@ class User extends Authenticatable implements MustVerifyEmail, PasskeyUser
     /**
      * Get all of the recipies for the User
      *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany<\App\Models\Recipie>
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany<\App\Models\Recipie>|\App\Models\Recipie
      */
     public function recipies()
     {
@@ -115,5 +116,13 @@ class User extends Authenticatable implements MustVerifyEmail, PasskeyUser
     public function sendPasswordResetNotification(#[\SensitiveParameter] $token)
     {
         $this->notify(new ResetPasswordNotification($token));
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany<\App\Models\Like>|\App\Models\Like
+     */
+    public function likes()
+    {
+        return $this->hasMany(Like::class);
     }
 }

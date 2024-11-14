@@ -20,7 +20,7 @@
         form.post(route('generate.action'), {
             preserveScroll: true,
             onSuccess() {
-                recipes.value = usePage().props.jetstream.flash.recipes
+                recipes.value = usePage().props.jetstream.flash?.recipes?.data
             }
         })
     }
@@ -61,7 +61,7 @@
                         </PrimaryButton>
                     </FlatForm>
                 </div>
-                <div class="py-4" v-if="recipes.length > 0">
+                <div class="py-4" v-if="recipes?.length > 0">
                     <div v-for="recipe in recipes" :key="recipe.id" class="m-4 p-6 bg-branding-blue-50 border border-branding-blue-200 rounded-lg shadow dark:bg-branding-blue-800 dark:border-branding-blue-700">
                         <RecipeCard :recipe="recipe"/>
                     </div>

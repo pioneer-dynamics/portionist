@@ -140,6 +140,7 @@ return [
                 'filterableAttributes' => ['recipeType', 'users'],
                 'sortableAttributes' => ['created_at'],
                 'searchableAttributes' => ['title', 'ingredients'],
+                'rankingRules' => ['words', 'typo', 'proximity', 'attribute', 'sort', 'exactness', 'score:desc'],
             ],
         ],
     ],

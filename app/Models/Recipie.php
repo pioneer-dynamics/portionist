@@ -2,14 +2,16 @@
 
 namespace App\Models;
 
+use Laravel\Scout\Searchable;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
-use Laravel\Scout\Searchable;
 use mathewparet\LaravelPolicyAbilitiesExport\Traits\ExportsPermissions;
 
 /**
  * @property Illuminate\Database\Eloquent\Relations\BelongsToMany<\App\Models\User> $user
+ * @property Illuminate\Database\Eloquent\Collection<\App\Models\Like> $likes
  */
 class Recipie extends Model
 {
@@ -22,10 +24,6 @@ class Recipie extends Model
         'ingredients',
         'directions',
         'recipeType',
-    ];
-
-    protected $appends = [
-        'is_saved',
     ];
 
     /**
@@ -45,9 +43,9 @@ class Recipie extends Model
     {
         $array = array_merge($this->toArray(), [
             'users' => $this->users->pluck('id'),
+            'score' => $this->likes()->liked()->count() - $this->likes()->disliked()->count(),
         ]);
 
-        unset($array['is_saved']);
         unset($array['can']);
 
         return $array;
@@ -63,22 +61,34 @@ class Recipie extends Model
         return $this->belongsToMany(User::class);
     }
 
-    public function isSaved(): Attribute
-    {
-        return Attribute::make(
-            get: function() {
-                if(request()->user() !== null) {
-                    return $this->users()->where('users.id', request()->user()->id)->exists();
-                }
-                else {
-                    return false;
-                }
-            },
-        );
-    }
-
     public function scopeType($qyery, $type)
     {
         return $qyery->where('recipeType', $type);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany<\App\Models\Like>|\App\Models\Like
+     */
+    public function likes()
+    {
+        return $this->hasMany(Like::class);
+    }
+
+    /**
+     * Check if the recipie is bookmarked by the given user
+     */
+    public function isBookmarkedBy(User $user): bool
+    {
+        return $this->users()->where('users.id', $user->id)->exists();
+    }
+
+    public function isLikedBy(User $user): bool
+    {
+        return $this->likes()->user($user)->liked()->exists();
+    }
+    
+    public function isDislikedBy(User $user): bool
+    {
+        return $this->likes()->user($user)->disliked()->exists();
     }
 }
