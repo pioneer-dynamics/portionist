@@ -14,7 +14,7 @@ class RecipeRepository implements RecipeRepositoryContract
     public function bookmark(Recipie $recipe, User $user): Recipie
     {
         $recipe->users()->toggle($user->id);
-        
+
         return $recipe->fresh();
     }
 
@@ -53,10 +53,11 @@ class RecipeRepository implements RecipeRepositoryContract
 
     public function like(Recipie $recipie, User $user): Recipie
     {
-        if($recipie->isLikedBy($user))
+        if ($recipie->isLikedBy($user)) {
             $recipie->likes()->user($user)->delete();
-        else
+        } else {
             $recipie->likes()->user($user)->updateOrCreate(['user_id' => $user->id], ['liked' => true]);
+        }
 
         $recipie->touch();
 
@@ -65,10 +66,11 @@ class RecipeRepository implements RecipeRepositoryContract
 
     public function dislike(Recipie $recipie, User $user): Recipie
     {
-        if($recipie->isDislikedBy($user))
+        if ($recipie->isDislikedBy($user)) {
             $recipie->likes()->user($user)->delete();
-        else
+        } else {
             $recipie->likes()->user($user)->updateOrCreate(['user_id' => $user->id], ['liked' => false]);
+        }
 
         $recipie->touch();
 

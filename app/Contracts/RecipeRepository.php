@@ -29,5 +29,4 @@ interface RecipeRepository
      * Unlike a recipe
      */
     public function dislike(Recipie $recipie, User $user): Recipie;
-
 }

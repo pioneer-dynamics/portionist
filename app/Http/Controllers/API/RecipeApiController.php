@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers\API;
 
-use App\Models\Recipie;
 use App\Contracts\RecipeRepository;
 use App\Http\Controllers\Controller;
-use App\Http\Resources\RecipieResource;
-use App\Http\Requests\LikeRecipeRequest;
 use App\Http\Requests\BookmarkRecipieRequest;
+use App\Http\Requests\LikeRecipeRequest;
 use App\Http\Requests\ListSavedRecipesRequest;
+use App\Http\Resources\RecipieResource;
 use App\Http\Resources\RecipieResourceCollection;
+use App\Models\Recipie;
 
 class RecipeApiController extends Controller
 {

@@ -2,13 +2,14 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 
 /**
  * @property \App\Models\User $user
  * @property \App\Models\Recipie $Recipie
+ *
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Like user(\App\Models\User $user)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Like liked()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Like disliked()
@@ -49,7 +50,7 @@ class Like extends Model
     {
         return $query->where('liked', true);
     }
-    
+
     public function scopeDisliked(Builder $query)
     {
         return $query->where('liked', false);

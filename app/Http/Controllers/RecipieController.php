@@ -50,7 +50,7 @@ class RecipieController extends Controller
     public function dislike(LikeRecipeRequest $request, Recipie $recipe)
     {
         $recipe = $this->recipeRepository->dislike($recipe, $request->user());
-        
+
         $recipe = new RecipieResource($recipe);
 
         return back()->with('flash', compact('recipe'));

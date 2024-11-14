@@ -2,11 +2,9 @@
 
 namespace App\Models;
 
-use Laravel\Scout\Searchable;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Laravel\Scout\Searchable;
 use mathewparet\LaravelPolicyAbilitiesExport\Traits\ExportsPermissions;
 
 /**
@@ -86,7 +84,7 @@ class Recipie extends Model
     {
         return $this->likes()->user($user)->liked()->exists();
     }
-    
+
     public function isDislikedBy(User $user): bool
     {
         return $this->likes()->user($user)->disliked()->exists();

@@ -15,23 +15,23 @@ class RecipieResource extends JsonResource
     public function toArray(Request $request): array
     {
         return array_merge(parent::toArray($request), [
-            'is_saved' => request()->user() 
-                            ? $this->resource->isBookmarkedBy(request()->user()) 
+            'is_saved' => request()->user()
+                            ? $this->resource->isBookmarkedBy(request()->user())
                             : null,
             'is_liked' => $this->when(
-                            request()->user(),
-                                $this->resource->isLikedBy(request()->user()) 
-                                ? true
-                                : ( $this->resource->isDislikedBy(request()->user()) ? false : null)
-                            ),
+                request()->user(),
+                $this->resource->isLikedBy(request()->user())
+                ? true
+                : ($this->resource->isDislikedBy(request()->user()) ? false : null)
+            ),
             'num_likes' => $this->when(
-                                request()->user(),
-                                $this->resource->likes()->liked()->count()
-                            ),
+                request()->user(),
+                $this->resource->likes()->liked()->count()
+            ),
             'num_dislikes' => $this->when(
-                                request()->user(),
-                                $this->resource->likes()->disliked()->count()
-                            )
+                request()->user(),
+                $this->resource->likes()->disliked()->count()
+            ),
         ]);
     }
 }
