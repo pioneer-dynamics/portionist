@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Inertia\Inertia;
 use App\Contracts\RecipeService;
-use App\Http\Requests\SearchRecipeRequest;
 use App\Http\Requests\GenerateRecipeRequest;
+use App\Http\Requests\SearchRecipeRequest;
 use App\Http\Resources\RecipieResourceCollection;
+use Inertia\Inertia;
 
 class GenerateRecipeController extends Controller
 {
