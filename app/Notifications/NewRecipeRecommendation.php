@@ -35,7 +35,7 @@ class NewRecipeRecommendation extends Notification
      */
     public function toMail(object $notifiable): MailMessage
     {
-        return (new MailMessage)->markdown('emails.NewRecipeRecommendation', [
+        return (new MailMessage)->subject('New '. $this->recipeType .' recipes for you')->markdown('emails.NewRecipeRecommendation', [
             'user' => $this->user,
             'recipeType' => $this->recipeType,
             'recommendations' => $this->recommendations,

@@ -5,11 +5,10 @@ Hi {{ $user->name }},
 
 Our elfs has some new {{ $recipeType }} recipes for you.
 
-<x-mail::panel>
 These recommendations are NOT added to your "My Recipes". If you wish to add them to your "My Recipes", please click on the bookmark button against the recipe.
-</x-mail::panel>
 
 @foreach($recommendations as $recommendation)
+<x-mail::panel>
 # {{ $recommendation['title'] }}
 
 ## Ingredients
@@ -27,6 +26,7 @@ These recommendations are NOT added to your "My Recipes". If you wish to add the
 
 <x-mail::button :url="route('recipes.toggleBookmark', ['recipe' => $recommendation->id, 'from' => 'email'])">Bookmark Recipe</x-mail::button>
 
+</x-mail::panel>
 @endforeach
 
 Thanks,<br>
