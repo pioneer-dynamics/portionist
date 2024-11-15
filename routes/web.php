@@ -14,9 +14,9 @@ Route::middleware([
 ])->group(function () {
     Route::get('generate', [GenerateRecipeController::class, 'form'])->name('generate.form');
     Route::post('generate', [GenerateRecipeController::class, 'generate'])->name('generate.action');
-    Route::post('recipes/{recipe}/bookmark', [RecipieController::class, 'bookmark'])->name('recipes.toggleBookmark');
-    Route::post('recipes/{recipe}/like', [RecipieController::class, 'like'])->name('recipes.like');
-    Route::post('recipes/{recipe}/dislike', [RecipieController::class, 'dislike'])->name('recipes.dislike');
+    Route::get('recipes/{recipe}/bookmark', [RecipieController::class, 'bookmark'])->name('recipes.toggleBookmark');
+    Route::get('recipes/{recipe}/like', [RecipieController::class, 'like'])->name('recipes.like');
+    Route::get('recipes/{recipe}/dislike', [RecipieController::class, 'dislike'])->name('recipes.dislike');
     Route::redirect('recipes', '/recipes/my/cocktail')->name('recipes.home');
     Route::redirect('recipes/{filter}', '/recipes/{filter}/cocktail')->name('recipes.list');
     Route::get('recipes/{filter}/{recipeType}', [RecipieController::class, 'index'])->whereIn('recipeType', ['food', 'cocktail'])->whereIn('filter', ['my', 'all'])->name('recipes.index');

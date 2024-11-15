@@ -39,7 +39,7 @@
     }
 
     const toggleBookmark = () => {
-        bookmarkForm.post(route('recipes.toggleBookmark', props.recipe.id), {
+        bookmarkForm.get(route('recipes.toggleBookmark', props.recipe.id), {
             preserveScroll: true,
             onSuccess: () => {
                 updateValues()
@@ -48,7 +48,7 @@
     }
 
     const likeRecipe = () => {
-        likeForm.post(route('recipes.like', props.recipe.id), {
+        likeForm.get(route('recipes.like', props.recipe.id), {
             preserveScroll: true,
             onSuccess: () => {
                 updateValues()
@@ -57,7 +57,7 @@
     }
 
     const dislikeRecipe = () => {
-        dislikeForm.post(route('recipes.dislike', props.recipe.id), {
+        dislikeForm.get(route('recipes.dislike', props.recipe.id), {
             preserveScroll: true,
             onSuccess: () => {
                 updateValues()
@@ -94,7 +94,10 @@
         <h6 class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">Ingredients</h6>
         <div class="mb-3 font-normal text-gray-700 dark:text-gray-400">
             <ul class="space-y-1 text-gray-500 list-disc list-inside dark:text-gray-400">
-                <li v-for="ingredient in recipe.ingredients" :key="ingredient">{{ ingredient }}</li>
+                <li v-for="ingredient in recipe.ingredients" :key="ingredient">
+                    {{ ingredient.name }}, {{ ingredient.measurement }}
+                    <span v-if="ingredient.adjective?.length > 0">{{ ingredient.adjective }}</span>
+                </li>
             </ul>
         </div>
         <h6 class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">Steps</h6>

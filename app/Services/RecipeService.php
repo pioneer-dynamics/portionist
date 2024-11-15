@@ -10,9 +10,13 @@ class RecipeService implements RecipeServieContract
 {
     public function __construct(private RecipeAi $recipeAi) {}
 
-    public function generate(array $ingredients, string $recipeType): array
+    public function generate(array $ingredients, string $recipeType, ?int $count = null): array
     {
-        $recipes = $this->recipeAi->withIngredients($ingredients)->recipeType($recipeType)->ask()->recipes();
+        logger(__CLASS__, ['ingredients' => $ingredients, 'recipeType' => $recipeType, 'count' => $count]);
+
+        $count = $count ?? config('recipie-ai.count');
+
+        $recipes = $this->recipeAi->withIngredients($ingredients)->recipeType($recipeType)->ask($count)->recipes();
 
         $models = collect();
 
