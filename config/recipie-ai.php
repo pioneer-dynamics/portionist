@@ -18,5 +18,5 @@ return [
     'recommendations' => [
         'count' => (int) env('RECIPE_AI_RECOMMENDATIONS_COUNT', 1),
         'based_on_count' => (int) env('RECIPE_AI_RECOMMENDATIONS_FETCH_COUNT', 3),
-    ]
+    ],
 ];

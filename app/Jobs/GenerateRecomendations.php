@@ -11,8 +11,8 @@ use Illuminate\Support\Facades\Bus;
 
 class GenerateRecomendations implements ShouldQueue
 {
-    use Queueable;
     use ChecksSubscriptions;
+    use Queueable;
 
     /**
      * Create a new job instance.
@@ -40,9 +40,10 @@ class GenerateRecomendations implements ShouldQueue
         $jobs = collect();
 
         User::all()->each(function (User $user) use ($jobs) {
-            
-            if($this->isntSubscribedToNotification($user, NewRecipeRecommendation::class))
+
+            if ($this->isntSubscribedToNotification($user, NewRecipeRecommendation::class)) {
                 return;
+            }
 
             $jobs->push([
                 new GenerateRecomendationForUser($user, 'cocktail'),

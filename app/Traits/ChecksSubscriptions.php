@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Traits;
 
 use App\Models\User;
@@ -8,8 +9,8 @@ trait ChecksSubscriptions
     private function noSubscriptionConfigurationExists(User $user, $notification)
     {
         return $user->notificationSubscriptions()
-                ->whereType($notification)
-                ->doesntExist();
+            ->whereType($notification)
+            ->doesntExist();
     }
 
     private function hasDefaultSubscription(User $user, $notification)
@@ -25,9 +26,9 @@ trait ChecksSubscriptions
     private function hasAtLeastOneChannelSubscribed(User $user, $notification)
     {
         return $user->notificationSubscriptions()
-                ->whereType($notification)
-                ->whereNull('unsubscribed_at')
-                ->exists();
+            ->whereType($notification)
+            ->whereNull('unsubscribed_at')
+            ->exists();
     }
 
     private function doesntHaveAtLeasetOneChannelSubscribed(User $user, $notification)
@@ -37,7 +38,7 @@ trait ChecksSubscriptions
 
     private function isntSubscribedToNotification(User $user, $notification)
     {
-        return $this->doesntHaveDefaultSubscription($user, $notification) 
+        return $this->doesntHaveDefaultSubscription($user, $notification)
                 && $this->doesntHaveAtLeasetOneChannelSubscribed($user, $notification);
     }
 }

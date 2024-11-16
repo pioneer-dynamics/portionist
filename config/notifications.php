@@ -1,6 +1,5 @@
 <?php
 
-use App\Models\Recipie;
 use App\Notifications\NewRecipeRecommendation;
 
 return [
@@ -10,5 +9,5 @@ return [
             // 'label' => 'New Recipe Recommendations',
             'channels' => ['mail', 'sms'],
         ],
-    ]
+    ],
 ];
