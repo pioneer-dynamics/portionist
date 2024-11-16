@@ -15,10 +15,10 @@ Route::name('api.')->group(function () {
             Route::post('/logout', 'logout')->name('logout');
         });
 
-        Route::post('generate', [GenerateRecipeApiController::class, 'search'])->name('generate');
-        Route::post('recipes/{recipe}/bookmark', [RecipeApiController::class, 'bookmark'])->name('recipes.toggleBookmark');
-        Route::post('recipes/{recipe}/like', [RecipeApiController::class, 'like'])->name('recipes.like');
-        Route::post('recipes/{recipe}/dislike', [RecipeApiController::class, 'dislike'])->name('recipes.dislike');
+        Route::post('generate', [GenerateRecipeApiController::class, 'generate'])->name('generate');
+        Route::get('recipes/{recipe}/bookmark', [RecipeApiController::class, 'bookmark'])->name('recipes.toggleBookmark');
+        Route::get('recipes/{recipe}/like', [RecipeApiController::class, 'like'])->name('recipes.like');
+        Route::get('recipes/{recipe}/dislike', [RecipeApiController::class, 'dislike'])->name('recipes.dislike');
         Route::get('recipes/{filter}/{recipeType}', [RecipeApiController::class, 'index'])->whereIn('recipeType', ['food', 'cocktail'])->whereIn('filter', ['my', 'all'])->name('recipes.index');
     });
 });

@@ -9,7 +9,7 @@ use App\Http\Resources\RecipieResourceCollection;
 
 class GenerateRecipeApiController extends Controller
 {
-    public function search(GenerateRecipeRequest $request, RecipeService $recipeService)
+    public function generate(GenerateRecipeRequest $request, RecipeService $recipeService)
     {
         $recipes = $recipeService->generate($request->ingredients, $request->recipeType);
 

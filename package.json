@@ -22,6 +22,7 @@
     },
     "dependencies": {
         "@simplewebauthn/browser": "^9.0.1",
+        "flowbite": "^2.5.2",
         "luxon": "^3.4.4"
     }
 }

@@ -7,5 +7,5 @@ interface RecipeService
     /**
      * Generate a recipe
      */
-    public function generate(array $ingredients, string $recipeType): array;
+    public function generate(array $ingredients, string $recipeType, ?int $count = null): array;
 }

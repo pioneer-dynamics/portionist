@@ -53,7 +53,24 @@ class OpenAi extends RecipeAiProvider implements RecipeAi
                                     'ingredients' => [
                                         'type' => 'array',
                                         'items' => [
-                                            'type' => 'string',
+                                            'type' => 'object',
+                                            'properties' => [
+                                                'name' => [
+                                                    'type' => 'string',
+                                                ],
+                                                'measurement' => [
+                                                    'type' => 'string',
+                                                ],
+                                                'adjective' => [
+                                                    'type' => 'string',
+                                                ],
+                                            ],
+                                            'required' => [
+                                                'name',
+                                                'measurement',
+                                                'adjective',
+                                            ],
+                                            'additionalProperties' => false,
                                         ],
                                     ],
                                     'directions' => [

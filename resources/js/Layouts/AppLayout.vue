@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue';
+import { ref, onMounted } from 'vue';
 import { Head, Link, router } from '@inertiajs/vue3';
 import ApplicationMark from '@/Components/ApplicationMark.vue';
 import Banner from '@/Components/Banner.vue';
@@ -11,6 +11,10 @@ import ResponsiveNavLink from '@/Components/ResponsiveNavLink.vue';
 const props = defineProps({
     title: String,
 });
+
+onMounted(() => {
+    initFlowbite();
+})
 
 const showingNavigationDropdown = ref(false);
 
