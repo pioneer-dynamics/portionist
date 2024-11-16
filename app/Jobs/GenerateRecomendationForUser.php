@@ -34,7 +34,7 @@ class GenerateRecomendationForUser implements ShouldQueue
             return;
 
         $recommendations = $this->generateRecommendations($recipeService);
-
+        
         if( $recommendations->isNotEmpty() )
             $this->user->notify(new NewRecipeRecommendation($this->user, $this->recipeType, $recommendations->all()));
     }
