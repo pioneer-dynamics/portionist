@@ -21,7 +21,7 @@ return Application::configure(basePath: dirname(__DIR__))
 
         //
     })
-    ->withSchedule(function(Schedule $schedule) {
+    ->withSchedule(function (Schedule $schedule) {
         $schedule->job(new GenerateRecomendations)->weekly();
     })
     ->withExceptions(function (Exceptions $exceptions) {

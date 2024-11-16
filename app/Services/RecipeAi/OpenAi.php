@@ -54,23 +54,23 @@ class OpenAi extends RecipeAiProvider implements RecipeAi
                                         'type' => 'array',
                                         'items' => [
                                             'type' => 'object',
-                                            "properties" => [
-                                                "name" => [
-                                                    "type" => "string",
+                                            'properties' => [
+                                                'name' => [
+                                                    'type' => 'string',
                                                 ],
-                                                "measurement" => [
-                                                    "type" => "string",
+                                                'measurement' => [
+                                                    'type' => 'string',
                                                 ],
-                                                "adjective" => [
-                                                    "type" => "string",
-                                                ]
+                                                'adjective' => [
+                                                    'type' => 'string',
+                                                ],
                                             ],
-                                            "required" => [
-                                                "name",
-                                                "measurement",
-                                                "adjective"
+                                            'required' => [
+                                                'name',
+                                                'measurement',
+                                                'adjective',
                                             ],
-                                            "additionalProperties" => false,
+                                            'additionalProperties' => false,
                                         ],
                                     ],
                                     'directions' => [

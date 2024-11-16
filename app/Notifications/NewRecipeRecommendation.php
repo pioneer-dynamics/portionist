@@ -4,9 +4,8 @@ namespace App\Notifications;
 
 use App\Models\User;
 use Illuminate\Bus\Queueable;
-use Illuminate\Notifications\Notification;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
+use Illuminate\Notifications\Notification;
 
 class NewRecipeRecommendation extends Notification
 {
@@ -35,7 +34,7 @@ class NewRecipeRecommendation extends Notification
      */
     public function toMail(object $notifiable): MailMessage
     {
-        return (new MailMessage)->subject('New '. $this->recipeType .' recipes for you')->markdown('emails.NewRecipeRecommendation', [
+        return (new MailMessage)->subject('New '.$this->recipeType.' recipes for you')->markdown('emails.NewRecipeRecommendation', [
             'user' => $this->user,
             'recipeType' => $this->recipeType,
             'recommendations' => $this->recommendations,
