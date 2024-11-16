@@ -7,7 +7,7 @@ return [
         [
             'class' => NewRecipeRecommendation::class,
             // 'label' => 'New Recipe Recommendations',
-            'channels' => ['mail', 'sms'],
+            'channels' => ['mail'],
         ],
     ],
 ];

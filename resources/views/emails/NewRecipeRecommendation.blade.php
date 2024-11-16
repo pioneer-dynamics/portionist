@@ -29,6 +29,10 @@ These recommendations are NOT added to your "My Recipes". If you wish to add the
 </x-mail::panel>
 @endforeach
 
+<x-mail::subcopy>
+    You are receiving this email because you either have bookmarked or liked recipies on {{ config('app.name') }}. To manage your email subscription settings, <a href="{{ route('profile.show') }}">click here</a> and scroll down to "Subscriptions".
+</x-mail::subcopy>
+
 Thanks,<br>
 {{ config('app.name') }}
 </x-mail::message>
