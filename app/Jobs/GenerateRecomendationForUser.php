@@ -35,8 +35,6 @@ class GenerateRecomendationForUser implements ShouldQueue
 
         $recommendations = $this->generateRecommendations($recipeService);
 
-        logger(__CLASS__, ['recipeType' => $this->recipeType, 'recommendations' => $recommendations->all()]);
-
         if( $recommendations->isNotEmpty() )
             $this->user->notify(new NewRecipeRecommendation($this->user, $this->recipeType, $recommendations->all()));
     }
@@ -48,14 +46,8 @@ class GenerateRecomendationForUser implements ShouldQueue
         $recommendations = collect();
 
         $seedRecipes->each(function($recipe) use(&$recommendations, $recipeService) {
-            logger('each', ['recipe' => $recipe->title]);
             $recommendations->push($recipeService->generate($this->getIngredients($recipe), $recipe->recipeType, config('recipie-ai.recommendations.count'))[0]);
         });
-
-        logger(__FUNCTION__, [
-            'seed' => $seedRecipes->all(),
-            'recommendations' => $recommendations->all()
-        ]);
 
         return $recommendations;
     }
