@@ -51,6 +51,7 @@
     const likeRecipe = () => {
         likeForm.get(route('recipes.like', props.recipe.id), {
             preserveScroll: true,
+            preserveState: true,
             onSuccess: () => {
                 updateValues()
             }
@@ -60,6 +61,7 @@
     const dislikeRecipe = () => {
         dislikeForm.get(route('recipes.dislike', props.recipe.id), {
             preserveScroll: true,
+            preserveState: true,
             onSuccess: () => {
                 updateValues()
             }
