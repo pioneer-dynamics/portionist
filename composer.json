@@ -14,6 +14,7 @@
         "laravel/sanctum": "^4.0",
         "laravel/scout": "^10.11",
         "laravel/tinker": "^2.9",
+        "liran-co/laravel-notification-subscriptions": "^1.8",
         "mathewparet/inertia-config-share": "^1.0",
         "mathewparet/laravel-git-version": "^1.0",
         "mathewparet/laravel-policy-abilities-export": "^2.0",

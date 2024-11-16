@@ -10,6 +10,7 @@ use mathewparet\LaravelPolicyAbilitiesExport\Traits\ExportsPermissions;
 /**
  * @property Illuminate\Database\Eloquent\Relations\BelongsToMany<\App\Models\User> $user
  * @property Illuminate\Database\Eloquent\Collection<\App\Models\Like> $likes
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Recipie type(string $recipeType)
  */
 class Recipie extends Model
 {

@@ -21,7 +21,10 @@ class RecipieController extends Controller
 
         $recipe = new RecipieResource($recipe);
 
-        return back()->with('flash', compact('recipe'));
+        if($request->get('from') === 'email')
+            return redirect()->route('recipes.index', ['filter' => 'my', 'recipeType' => $recipe->recipeType])->banner($recipe->title. ' has been bookmarked');
+        else
+            return back()->with('flash', compact('recipe'));
     }
 
     /**

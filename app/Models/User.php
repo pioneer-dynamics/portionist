@@ -12,6 +12,7 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
+use LiranCo\NotificationSubscriptions\Traits\HasNotificationSubscriptions;
 use PioneerDynamics\LaravelPasskey\Contracts\PasskeyUser;
 use PioneerDynamics\LaravelPasskey\Traits\HasPasskeys;
 
@@ -23,6 +24,7 @@ use PioneerDynamics\LaravelPasskey\Traits\HasPasskeys;
 class User extends Authenticatable implements MustVerifyEmail, PasskeyUser
 {
     use HasApiTokens;
+    use HasNotificationSubscriptions;
 
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory;
@@ -44,6 +46,10 @@ class User extends Authenticatable implements MustVerifyEmail, PasskeyUser
     ];
 
     protected $touches = ['recipies'];
+
+    protected $with = [
+        'notificationSubscriptions',
+    ];
 
     /**
      * The attributes that should be hidden for serialization.

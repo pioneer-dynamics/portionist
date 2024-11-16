@@ -6,6 +6,7 @@ import SectionBorder from '@/Components/SectionBorder.vue';
 import TwoFactorAuthenticationForm from '@/Pages/Profile/Partials/TwoFactorAuthenticationForm.vue';
 import UpdatePasswordForm from '@/Pages/Profile/Partials/UpdatePasswordForm.vue';
 import UpdateProfileInformationForm from '@/Pages/Profile/Partials/UpdateProfileInformationForm.vue';
+import NotificationSubscriptions from './Partials/NotificationSubscriptions.vue';
 import PassKeyForm from './Partials/PassKeyForm.vue';
 
 defineProps({
@@ -46,6 +47,12 @@ defineProps({
                 </div>
 
                 <PassKeyForm
+                    class="mt-10 sm:mt-0"
+                />
+
+                <SectionBorder />
+                
+                <NotificationSubscriptions
                     class="mt-10 sm:mt-0"
                 />
 

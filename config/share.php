@@ -12,6 +12,7 @@ return [
         'app.name',
         'app.url',
         'app.copyright',
+        'notifications',
     ],
 
     /**
