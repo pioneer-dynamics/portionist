@@ -41,6 +41,7 @@
     const toggleBookmark = () => {
         bookmarkForm.get(route('recipes.toggleBookmark', props.recipe.id), {
             preserveScroll: true,
+            preserveState: true,
             onSuccess: () => {
                 updateValues()
             }
