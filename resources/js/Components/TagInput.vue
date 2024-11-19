@@ -22,6 +22,12 @@ onMounted(() => {
 
 defineExpose({ focus: () => input.value.focus() });
 
+const addTagIfReady = (event) => {
+    if(event.target.value.slice(-1) === ',' || event.target.value.slice(-1) === ';') {
+        addTag(event)
+    }
+}
+
 const addTag = (event) => {
     event.preventDefault()
         let val = event.target.value.trim()
@@ -70,8 +76,10 @@ const focusTagBox = () => {
                 @keydown.;='addTag'
                 @keydown.delete='removeLastTag'
                 @blur="addTag"
+                type="search"
+                @search="addTagIfReady"
                 :placeholder="tags.length == 0 ? placeholder : ''"
-                class="shadow-none ring-0 focus:ring-0 border-0 focus:border-0 appearance-none focus:outline-0 dark:bg-gray-900 dark:text-gray-300 "
+                class="[&::-webkit-search-cancel-button]:hidden shadow-none ring-0 focus:ring-0 border-0 focus:border-0 appearance-none focus:outline-0 dark:bg-gray-900 dark:text-gray-300 "
             >
         </div>
     </div>
