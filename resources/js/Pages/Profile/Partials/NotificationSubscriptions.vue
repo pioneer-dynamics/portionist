@@ -69,10 +69,10 @@
                     <tbody>
                         <tr v-for="notification in $page.props.config.notifications.items" :key="notification.class" class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
                             <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                {{ getLabel(notification) }}
+                                <InputLabel :value="getLabel(notification)" :for="getClassBaseName(notification)"></InputLabel>
                             </th>
                             <td class="px-6 py-4" v-for="channel in allChannels" :key="'subscription-'+channel">
-                                <Toggle v-if="notification.channels.includes(channel)" v-model:checked="form.subscriptions[getClassBaseName(notification)]" @change="changeSubscription(notification)" :value="channel"/>
+                                <Toggle :name="getClassBaseName(notification)" :id="getClassBaseName(notification)" v-if="notification.channels.includes(channel)" v-model:checked="form.subscriptions[getClassBaseName(notification)]" @change="changeSubscription(notification)" :value="channel"/>
                             </td>
                         </tr>
                     </tbody>
