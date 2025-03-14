@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
+        <script src="https://simple-analytics-develop-pr2n0q.laravel.cloud/tracker.js" data-organization="pZR3ozAXNw" data-server="https://simple-analytics-develop-pr2n0q.laravel.cloud">
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
