@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use App\Notifications\ResetPasswordNotification;
 use App\Notifications\VerifyEmail;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -91,7 +93,7 @@ class User extends Authenticatable implements MustVerifyEmail, PasskeyUser
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany<\App\Models\Recipie>|\App\Models\Recipie
      */
-    public function recipies()
+    public function recipies(): BelongsToMany
     {
         return $this->belongsToMany(Recipie::class)->using(RecipieUser::class);
     }
@@ -127,7 +129,7 @@ class User extends Authenticatable implements MustVerifyEmail, PasskeyUser
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany<\App\Models\Like>|\App\Models\Like
      */
-    public function likes()
+    public function likes(): HasMany
     {
         return $this->hasMany(Like::class);
     }

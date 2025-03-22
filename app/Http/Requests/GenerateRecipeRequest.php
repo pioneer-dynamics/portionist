@@ -29,7 +29,7 @@ class GenerateRecipeRequest extends FormRequest
         ];
     }
 
-    public function attributes()
+    public function attributes(): array
     {
         return [
             'recipeType' => 'recipe type',
