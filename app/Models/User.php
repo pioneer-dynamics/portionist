@@ -75,6 +75,11 @@ class User extends Authenticatable implements MustVerifyEmail, PasskeyUser
         'is_super_admin',
     ];
 
+    public function getUserIcon()
+    {
+        return null;
+    }
+
     /**
      * Get the attributes that should be cast.
      *
