@@ -7,6 +7,8 @@ use App\Notifications\VerifyEmail;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
@@ -73,6 +75,11 @@ class User extends Authenticatable implements MustVerifyEmail, PasskeyUser
         'is_super_admin',
     ];
 
+    public function getUserIcon()
+    {
+        return null;
+    }
+
     /**
      * Get the attributes that should be cast.
      *
@@ -91,7 +98,7 @@ class User extends Authenticatable implements MustVerifyEmail, PasskeyUser
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany<\App\Models\Recipie>|\App\Models\Recipie
      */
-    public function recipies()
+    public function recipies(): BelongsToMany
     {
         return $this->belongsToMany(Recipie::class)->using(RecipieUser::class);
     }
@@ -127,7 +134,7 @@ class User extends Authenticatable implements MustVerifyEmail, PasskeyUser
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany<\App\Models\Like>|\App\Models\Like
      */
-    public function likes()
+    public function likes(): HasMany
     {
         return $this->hasMany(Like::class);
     }

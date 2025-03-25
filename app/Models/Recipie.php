@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Laravel\Scout\Searchable;
 use mathewparet\LaravelPolicyAbilitiesExport\Traits\ExportsPermissions;
 
@@ -56,7 +58,7 @@ class Recipie extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany<\App\Models\User>
      */
-    public function users()
+    public function users(): BelongsToMany
     {
         return $this->belongsToMany(User::class);
     }
@@ -69,7 +71,7 @@ class Recipie extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany<\App\Models\Like>|\App\Models\Like
      */
-    public function likes()
+    public function likes(): HasMany
     {
         return $this->hasMany(Like::class);
     }

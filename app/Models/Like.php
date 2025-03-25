@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
  * @property \App\Models\User $user
@@ -31,12 +32,12 @@ class Like extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Builder<\App\Models\User>
      */
-    public function user()
+    public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }
 
-    public function recipie()
+    public function recipie(): BelongsTo
     {
         return $this->belongsTo(Recipie::class);
     }
