@@ -53,7 +53,7 @@ class RecipieController extends Controller
         ] );
 
         return back()->with('flash', [
-            'recipie' => $recipe,
+            'recipe' => $recipe,
         ]);
     }
 
