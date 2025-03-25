@@ -47,11 +47,7 @@ class RecipieController extends Controller
         $recipe = $this->recipeRepository->like($recipe, $request->user());
 
         $recipe = new RecipieResource($recipe);
-
-        logger(__CLASS__.'::'.__FUNCTION__.':'.__LINE__.' liked ', [
-            'recipe' => $recipe
-        ] );
-
+        
         return back()->with('flash', [
             'recipe' => $recipe,
         ]);
