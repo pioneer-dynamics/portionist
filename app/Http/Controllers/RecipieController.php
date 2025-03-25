@@ -48,9 +48,7 @@ class RecipieController extends Controller
 
         $recipe = new RecipieResource($recipe);
 
-        logger(__CLASS__.'::'.__FUNCTION__.':'.__LINE__.' liked ', [
-            'recipe' => $recipe
-        ] );
+        logger(__CLASS__.'::'.__FUNCTION__.':'.__LINE__.' liked ', compact('recipie'));
 
         return back()->with('flash', compact('recipe'));
     }
