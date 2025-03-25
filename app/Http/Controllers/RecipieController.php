@@ -48,9 +48,13 @@ class RecipieController extends Controller
 
         $recipe = new RecipieResource($recipe);
 
-        logger(__CLASS__.'::'.__FUNCTION__.':'.__LINE__.' liked ', compact('recipie'));
+        logger(__CLASS__.'::'.__FUNCTION__.':'.__LINE__.' liked ', [
+            'recipe' => $recipe
+        ] );
 
-        return back()->with('flash', compact('recipe'));
+        return back()->with('flash', [
+            'recipie' => $recipe,
+        ]);
     }
 
     public function dislike(LikeRecipeRequest $request, Recipie $recipe)
