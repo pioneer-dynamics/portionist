@@ -129,6 +129,59 @@ The application uses Laravel's queue system for async operations:
    - Entry point: `resources/js/app.js`
    - Config: `vite.config.js`
 
+### Progressive Web App (PWA)
+
+The application is configured as a Progressive Web App, allowing users to install it on their devices and use it offline.
+
+1. **PWA Configuration** (`vite.config.js`):
+   - Uses `vite-plugin-pwa` for automatic service worker generation
+   - Manifest configuration for installability
+   - Auto-update strategy with user confirmation
+
+2. **Service Worker & Caching**:
+   - **Precaching**: Static assets (JS, CSS, images) are precached for instant loading
+   - **Font Caching**: Google Fonts cached with CacheFirst strategy (1 year expiration)
+   - **Page Caching**: All navigation requests (recipes, dashboard) use NetworkFirst with 3s timeout
+   - **API Caching**: Recipe API endpoints cached with NetworkFirst strategy (1-week expiration)
+   - Service worker location: `public/build/sw.js` (auto-generated on build)
+   - Network timeout: 3 seconds before falling back to cache when offline
+   - **Important**: Pages must be visited while online first to be cached for offline use
+
+3. **App Icons**:
+   - `public/pwa-192x192.png`: Standard PWA icon
+   - `public/pwa-512x512.png`: Large PWA icon (also used for maskable)
+   - `public/apple-touch-icon.png`: iOS home screen icon
+   - Icons generated from `resources/static/logo.png`
+
+4. **PWA Registration** (`resources/js/app.js`):
+   - Service worker registered only in production builds (not dev mode)
+   - Prompts user to reload when new version available
+   - Logs "App ready to work offline" to console when ready
+   - Uses dynamic import to avoid dev mode conflicts
+
+5. **Meta Tags** (`resources/views/app.blade.php`):
+   - Theme color configuration
+   - Apple mobile web app meta tags
+   - Mobile-specific viewport optimizations
+
+6. **Manifest** (`public/build/manifest.webmanifest`):
+   - App name: "Portionist - AI Recipe Generator"
+   - Display mode: standalone (fullscreen app experience)
+   - Start URL: `/`
+   - Auto-generated during build process
+
+**Installation**: Users can install Portionist on their device by clicking "Add to Home Screen" or "Install" in their browser. Once installed, the app works offline for previously visited recipes and provides a native app-like experience.
+
+**Testing PWA Locally**:
+1. Build production assets: `npm run build`
+2. Serve with Laravel: `php artisan serve`
+3. Visit pages while online to cache them
+4. Go offline (DevTools → Network → Offline)
+5. Navigate to cached pages - they should work offline
+6. Check cache in DevTools → Application → Cache Storage
+
+**Dev Mode**: PWA features are disabled in `npm run dev` to avoid routing conflicts. Use production build for PWA testing.
+
 ### Authentication & Authorization
 
 - **Laravel Jetstream**: Base authentication system with Inertia stack
